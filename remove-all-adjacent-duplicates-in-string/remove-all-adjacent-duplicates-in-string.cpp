@@ -2,7 +2,7 @@
 class Solution {
 public:
     string removeDuplicates(string s) { 
-        stack<char> stack;
+        /*stack<char> stack;
         
         for(int i=0;i<s.size();i++)
         {
@@ -24,6 +24,25 @@ public:
         }
         //cout<<str;
         reverse(str.begin(),str.end());
-        return str;
+        return str;*/
+        
+        int sp=-1;
+        for(int i=0;i<s.size();i++)
+        {
+            if(sp==-1 || s[sp]!=s[i])
+            {
+                 sp++;
+                s[sp]=s[i];
+               
+            }
+            else
+                sp--;
+        }
+        string ans="";
+        for(int i=0;i<=sp;i++)
+        {
+            ans.push_back(s[i]);
+        }
+        return ans;
    }
 };
