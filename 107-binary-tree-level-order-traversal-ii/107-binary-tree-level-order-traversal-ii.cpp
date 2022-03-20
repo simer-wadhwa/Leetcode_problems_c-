@@ -19,6 +19,7 @@ public:
         
         vector<int> temp;
         queue<TreeNode*> q;
+        stack<vector<int>> s;
         q.push(root);
         q.push(NULL);
         while(!q.empty())
@@ -28,7 +29,7 @@ public:
             if(f==NULL)
             {
                 cout<<endl;
-                ans.push_back(temp);
+                s.push(temp);
                 temp.clear();
                 
               if(!q.empty())
@@ -37,6 +38,7 @@ public:
             else
             {
                 temp.push_back(f->val);
+               
                 if(f->left)
                     q.push(f->left);
                 if(f->right)
@@ -44,7 +46,12 @@ public:
                 
             }
         }
-        reverse(ans.begin(),ans.end());
+        //reverse(ans.begin(),ans.end());
+        while(!s.empty())
+        {
+            ans.push_back(s.top());
+            s.pop();
+        }
         return ans;
     }
 };
