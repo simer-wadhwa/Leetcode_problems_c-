@@ -9,7 +9,7 @@ public:
             if(sum<0)
             {
                 sum=0;
-                i=j+1;
+              //  i=j+1;
             }
             
             
