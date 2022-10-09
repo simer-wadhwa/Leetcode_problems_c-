@@ -1,34 +1,45 @@
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& num) 
+    vector<vector<int>> threeSum(vector<int>& arr) 
     {
          vector<vector<int>> res;
-        sort(num.begin(),num.end());
-        for (int i = 0; i < num.size()-2; i++) {
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<arr.size();i++)
+        { 
+            if (i==0|| i > 0 && arr[i] != arr[i-1]) 
+            {          
+            int j=i+1;
+            int k=arr.size()-1;
             
-            if (i == 0 || (i > 0 && num[i] != num[i-1])) {
+            while(j<k)
+            {
+                int sum=arr[i]+arr[j]+arr[k];
                 
-                int lo = i+1, hi = (int)(num.size())-1, sum = 0 - num[i];
-                
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-                        
-                        vector<int> temp; 
-                        temp.push_back(num[i]); 
-                        temp.push_back(num[lo]); 
-                        temp.push_back(num[hi]); 
-                        res.push_back(temp);
-                        
-                        while (lo < hi && num[lo] == num[lo+1]) lo++;
-                        while (lo < hi && num[hi] == num[hi-1]) hi--;
-                        
-                        lo++; hi--;
-                    } 
-                    else if (num[lo] + num[hi] < sum) lo++;
-                    else hi--;
-               }
+                if(sum==0)
+                {
+                 vector<int>temp;
+                    temp.push_back(arr[i]);
+                    temp.push_back(arr[j]);
+                    temp.push_back(arr[k]);
+                    
+                    res.push_back(temp);
+                   
+                    
+                     while (j < k && arr[j] == arr[j+1]) j++;
+                        while (j < k && arr[k] == arr[k-1]) k--;
+                    
+                     j++;k--;
+                }
+                if(sum>0)
+                    k--;
+                if(sum<0)
+                    j++;
             }
+            }
+            
+            
         }
         return res;
+        
     }
 };
