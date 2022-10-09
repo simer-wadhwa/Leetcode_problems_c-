@@ -6,8 +6,8 @@ public:
         sort(arr.begin(),arr.end());
         for(int i=0;i<arr.size();i++)
         { 
-            if (i==0|| i > 0 && arr[i] != arr[i-1]) 
-            {          
+            if( i > 0 && arr[i] == arr[i-1]) continue; 
+                     
             int j=i+1;
             int k=arr.size()-1;
             
@@ -35,7 +35,7 @@ public:
                 if(sum<0)
                     j++;
             }
-            }
+            
             
             
         }
