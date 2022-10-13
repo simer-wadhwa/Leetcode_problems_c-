@@ -25,7 +25,7 @@ class Solution{
     	    {
     	       platform++; 
     	       i++;
-    	      
+    	        m=max(m,platform);
     	       
     	    }
     	    else
@@ -34,7 +34,7 @@ class Solution{
     	        j++;
     	    }
     	    
-    	     m=max(m,platform);
+    	   
     	}
     	return m;
     }
